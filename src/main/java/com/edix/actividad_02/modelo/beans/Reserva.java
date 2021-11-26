@@ -7,21 +7,21 @@ public class Reserva implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	//Atributos de Reserva
-	private int id_Reserva;
+	private int idReserva;
 	private Evento evento;
 	private Usuario usuario;
-	private double precio_venta;
+	private double precioVenta;
 	private String observaciones;
 	private int cantidad;
 	
 	//Constructores con y sin parametros
-	public Reserva(int id_Reserva, Evento evento, Usuario usuario, double precio_venta, String observaciones,
+	public Reserva(int idReserva, Evento evento, Usuario usuario, double precioVenta, String observaciones,
 			int cantidad) {
 		super();
-		this.id_Reserva = id_Reserva;
+		this.idReserva = idReserva;
 		this.evento = evento;
 		this.usuario = usuario;
-		this.precio_venta = precio_venta;
+		this.precioVenta = precioVenta;
 		this.observaciones = observaciones;
 		this.cantidad = cantidad;
 	}
@@ -31,12 +31,12 @@ public class Reserva implements Serializable {
 	}
 	
 	//Getters y Setters
-	public int getId_Reserva() {
-		return id_Reserva;
+	public int getIdReserva() {
+		return idReserva;
 	}
 
-	public void setId_Reserva(int id_Reserva) {
-		this.id_Reserva = id_Reserva;
+	public void setIdReserva(int idReserva) {
+		this.idReserva = idReserva;
 	}
 
 	public Evento getEvento() {
@@ -55,12 +55,12 @@ public class Reserva implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public double getPrecio_venta() {
-		return precio_venta;
+	public double getPrecioVenta() {
+		return precioVenta;
 	}
 
-	public void setPrecio_venta(double precio_venta) {
-		this.precio_venta = precio_venta;
+	public void setPrecioVenta(double precioVenta) {
+		this.precioVenta = precioVenta;
 	}
 
 	public String getObservaciones() {
@@ -84,7 +84,7 @@ public class Reserva implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id_Reserva;
+		result = prime * result + idReserva;
 		return result;
 	}
 
@@ -95,7 +95,7 @@ public class Reserva implements Serializable {
 		if (!(obj instanceof Reserva))
 			return false;
 		Reserva other = (Reserva) obj;
-		if (id_Reserva != other.id_Reserva)
+		if (idReserva != other.idReserva)
 			return false;
 		return true;
 	}
@@ -103,8 +103,8 @@ public class Reserva implements Serializable {
 	//Sobreescribo toString
 	@Override
 	public String toString() {
-		return "Reserva [id_Reserva=" + id_Reserva + ", evento=" + evento + ", usuario=" + usuario + ", precio_venta="
-				+ precio_venta + ", observaciones=" + observaciones + ", cantidad=" + cantidad + "]";
+		return "Reserva [idReserva=" + idReserva + ", evento=" + evento + ", usuario=" + usuario + ", precioVenta="
+				+ precioVenta + ", observaciones=" + observaciones + ", cantidad=" + cantidad + "]";
 	}
 	
 	

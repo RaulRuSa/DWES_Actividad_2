@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,15 +52,11 @@
 		<label for id="precio_decimal">Precio</label>
 		<input type="number" id="precio_decimal" name="precio_decimal" step="any">	
 		<br>
-		<label for id="id_Tipo">Id Tipo</label>
-		<input type="number" id="id_Tipo" name="tipo.id_Tipo">	
-		<br>
-		<label for id="nombre_Tipo">Nombre Tipo</label>
-		<input type="text" id="nombre_Tipo" name="tipo.nombre" >	
-		<br>
-		<label for id="descripcion_Tipo">Descripcion Tipo</label>
-		<input type="text" id="descripcion_Tipo" name="tipo.descripcion">		
-		
+		<select name="tipo.id_Tipo">
+			<c:forEach var="ele" items="${listaTipo}">
+				<option value="${ele.id_Tipo}">${ele.nombre}</option>
+			</c:forEach>
+		</select>
 		<input type="submit" value="Enviar">
 	</form>
 </body>

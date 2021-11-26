@@ -100,13 +100,11 @@ public class Usuario implements Serializable{
 		this.fecha_Registro = fecha_Registro;
 	}
 
-	//Sobreescribo hasCode y equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		result = prime * result + id_Usuario;
 		return result;
 	}
 
@@ -117,15 +115,7 @@ public class Usuario implements Serializable{
 		if (!(obj instanceof Usuario))
 			return false;
 		Usuario other = (Usuario) obj;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!username.equals(other.username))
+		if (id_Usuario != other.id_Usuario)
 			return false;
 		return true;
 	}
@@ -137,6 +127,10 @@ public class Usuario implements Serializable{
 				+ email + ", nombre=" + nombre + ", direccion=" + direccion + ", enable=" + enabled + ", fecha_Registro="
 				+ fecha_Registro + "]";
 	}
+
+	
+
+	
 
 	
 

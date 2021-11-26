@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,8 +32,8 @@
 			<tr>
 				<td>${evento.id_Evento}</td>
 				<td>${evento.nombre}</td>
-				<td>${evento.descripcion}</td>			
-				<td>${evento.fecha_Inicio}</td>
+				<td>${evento.descripcion}</td>	
+				<fmt:formatDate pattern = "dd-MM-yyyy" value = "${eleEvento.fecha_Inicio}"/>		
 				<td>${evento.duracion}</td>
 				<td>${evento.direccion}</td>
 				<td>${evento.estado}</td>

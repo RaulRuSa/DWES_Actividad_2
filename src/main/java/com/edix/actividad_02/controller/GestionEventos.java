@@ -1,6 +1,7 @@
 package com.edix.actividad_02.controller;
 
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +18,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.edix.actividad_02.modelo.beans.Evento;
+import com.edix.actividad_02.modelo.beans.Tipo;
 import com.edix.actividad_02.modelo.repository.IntEventoDao;
 import com.edix.actividad_02.modelo.repository.IntTipoDao;
+import java.util.List;
 
 @Controller
 @RequestMapping("/GestionEventos")
 public class GestionEventos {
 	@Autowired 
 	private IntEventoDao iEventoDao;
+	
+	@Autowired
+	private IntTipoDao iTipo;
 	
 	@InitBinder
 		public void initBinder (WebDataBinder webdataBinder) {
@@ -33,12 +39,17 @@ public class GestionEventos {
 	}
 	
 	@GetMapping("/altaEvento")
-	public String altaEvento() {
+	public String altaEvento(Model model) {
+		List<Tipo> listaTipo = iTipo.findAll();
+		model.addAttribute("listaTipo", listaTipo);
 		return "altaEvento";
 	}
 	
 	@PostMapping("/altaEvento")
 	public String altaEvento(Evento evento, RedirectAttributes rattr) {
+		int idTipo =evento.getTipo().getId_Tipo();
+		Tipo tipoEvento =iTipo.finById(idTipo);
+		evento.setTipo(tipoEvento);
 		int msg = iEventoDao.insertarEvento(evento);
 		if (msg == 0) 
 			rattr.addFlashAttribute("mensaje", "No se ha podido dar de alta el producto");
@@ -77,5 +88,11 @@ public class GestionEventos {
 		}
 			
 		return "index";
+	}
+	
+	@GetMapping("/tiposEventos")
+	public String tipoEvento(Model model){
+		model.addAttribute("tipoEventoLista", iTipo.findAll());
+		return "tipoEvento";
 	}
 }

@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.edix.actividad_02.modelo.beans.Evento;
+import com.edix.actividad_02.modelo.beans.Reserva;
 import com.edix.actividad_02.modelo.beans.Usuario;
 
 @Repository
@@ -32,14 +34,26 @@ public class UsuarioDaoImpl implements IntUsuarioDao{
 	}
 	
 	@Override
-	public Usuario findByUsername(String username) {
-		Usuario aux = new Usuario();
-		aux.setUsername(username);
-		int pos = lista.indexOf(aux);
-		if (pos == -1) 
-			return null;
-		else 
-			return lista.get(pos);
+	public int findLastId() {
+		int lastId=0;
+		for(Usuario ele: lista) 
+			if(ele.getId_Usuario()>lastId)
+				lastId=ele.getId_Usuario();
+		return lastId;
+	}
+	
+	@Override
+	public Usuario findByUsername(String nombre) {
+		for(Usuario ele: this.findAll()){
+			if(ele.getNombre().equals(nombre))
+				return ele;
+		}
+		return null;
+	}
+	
+	@Override
+	public List<Usuario> findAll() {
+		return lista;
 	}
 	
 	@Override
@@ -55,13 +69,18 @@ public class UsuarioDaoImpl implements IntUsuarioDao{
 	
 	@Override
 	public Usuario comprobarLogin(String userName, String password) {
-		Usuario aux = new Usuario();
-		aux.setUsername(userName);
-		aux.setPassword(password);
-		int pos = lista.indexOf(aux);
-		if (pos == -1)
-			return null;
-		else
-			return lista.get(pos);
+		/*
+		 * Usuario aux = new Usuario(); aux.setUsername(userName);
+		 * aux.setPassword(password); int pos = lista.indexOf(aux); if (pos == -1)
+		 * return null; else return lista.get(pos);
+		 */
+		
+		//List<Usuario> aux = new ArrayList<Usuario>();
+		for(Usuario ele: this.findAll()){
+			if(ele.getUsername().equals(userName)&&ele.getPassword().equals(password))
+				return ele;
+		}
+		return null;
 	}
+	
 }

@@ -14,7 +14,7 @@
 		<li><a href="#">Usuarios</a></li>
 		<li><a href="#">Eventos/tipo</a></li> 
 		<li><a href="/GestionClientes/login">Login</a></li>
-		<li><a href="#">Registro</a></li>
+		<li><a href="/GestionClientes/registrarse">Registro</a></li>
 		<li><a href="#">Salir</a></li>
 	</ul>
 	<h2>Añadir Evento</h2>

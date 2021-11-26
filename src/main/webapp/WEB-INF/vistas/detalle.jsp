@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +12,10 @@
 	<table border="1">
 		<tr>
 			<td><a href="/GestionClientes/destacados">Destacados</a></td>
-			<td rowspan="2"><a href="#">Tipos de evento</a></td>
-			<td rowspan="2"><a href="#">Mis Reservas</a></td>
+			<td rowspan="2"><a href="/GestionEventos/tiposEventos">Tipos de evento</a></td>
+			<td rowspan="2"><a href="/GestionClientes/misreservas">Mis Reservas</a></td>
 			<td rowspan="2"><a href="/GestionClientes/login">Login</a></td>
-			<td rowspan="2"><a href="#">Registro</a></td>
+			<td rowspan="2"><a href="/GestionClientes/registrarse">Registro</a></td>
 			<td rowspan="2"><a href="/GestionClientes/cerrarSesion">Salir</a></td>
 		</tr>
 		<tr>
@@ -28,23 +29,28 @@
 	<br>
 	<table border="1">
 		<tr>
+			<td>Id Evento</td>
+			<td>${evento.id_Evento}</td>
+			</tr>
+		<tr>
+		<tr>
 			<td>Nombre</td>
 			<td>${evento.nombre}</td>
 			</tr>
 		<tr>
-			<td>Descripcion</td>
+			<td>Descripción</td>
 			<td>${evento.descripcion}</td>
 		</tr>
 		<tr>
-			<td>Direccion</td>
+			<td>Dirección</td>
 			<td>${evento.direccion}</td>
 		</tr>
 		<tr>
 			<td>Fecha Inicio</td>
-			<td>${evento.fecha_Inicio}</td>
+			<td><fmt:formatDate pattern = "dd-MM-yyyy" value = "${ele.fecha_Inicio}"/></td>
 		</tr>
 		<tr>
-			<td>Duracion</td>
+			<td>Duración</td>
 			<td>${evento.duracion}</td>
 			 </tr>
 		<tr>
@@ -60,24 +66,14 @@
 			<td>${evento.precio_decimal}</td>
 		</tr>
 	</table>
-	
-	<form method="/detalle" action="post">
+	<br>
+	<form action="/GestionClientes/reservar/${evento.id_Evento}" method="post">
 		<label for="cantidad">Cantidad</label>
 		<input type="number" id="cantidad" name="cantidad">
+		<input type="hidden" name="id_Evento" value="${evento.id_Evento}">
 		<input type="submit" value="Reservar">
 	</form>
 	
-	<!--
-		 <form action="">
-		<label for="cantidad">Cantidad</label>
-		<input type="number" id="cantidad" name="cantidad">
-		<a href="">
-	</form>
-	
-	/GestionClientes/detalle/cantidad??????? como mando cantidad para /reservar/{id}
-	 -->
-	
-	
-	<p>Mensaje: </p>
+	<p>Mensaje: ${mensaje} </p>
 </body>
 </html>

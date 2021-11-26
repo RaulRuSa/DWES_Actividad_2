@@ -21,7 +21,7 @@ public class EventoDaoImpl implements IntEventoDao {
 	private void cargarDatos() {
 		IntTipoDao iTipo = new TipoDaoImpl();
 		
-		lista.add(new Evento(1,"evento 1","es el evento111", new Date(), 20,"c/Bermuda", "activo", 's' ,11, 2, 9.1, iTipo.finById(2)));
+		lista.add(new Evento(1,"evento 1","es el evento111", new Date(), 20,"c/Bermuda", "activo", 's' ,8, 2, 9.1, iTipo.finById(2)));
 		lista.add(new Evento(2,"evento 2","es el evento123", new Date(), 20,"c/Catalejo", "inactivo", 'n' ,14, 5, 17.3, iTipo.finById(4)));
 		lista.add(new Evento(3,"evento 3","es el evento71", new Date(), 20,"c/Reloj", "activo", 'n' ,134, 25, 107.3, iTipo.finById(2)));
 		lista.add(new Evento(4,"evento 4","es el evento72", new Date(), 20,"c/Catalejo", "inactivo", 's' ,33, 51, 717.3, iTipo.finById(1)));
